@@ -1,0 +1,62 @@
+{% block title %}<h1>Bienvenue sur la page de modification de mes formulaires!</h1>{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                <a class="nav-link active" href="/enfant/edit"><button type="button" class="btn btn-primary">Enfant</button>
+                    <span class="visually-hidden">(current)</span>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/famille/edit"> <button type="button" class="btn btn-warning"> Famille</button></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/personneresponsable/edit"><button type="button" class="btn btn-success">Personne Responsable</button></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/dossiermedical/edit"><button type="button" class="btn btn-info">Dossier Médical</button></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/dossierscolaire/edit"><button type="button" class="btn btn-light">Dossier Scolaire</button></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href=" /dossierstage/edit"><button type="button" class="btn btn-primary">Dossier Stage</button></a>
+                </li>
+ </nav>
+<h2>Liste des dossiers medicaux :</h2>
+<table class="table">
+ <thead> 
+ <tr>
+  <th>ID</th> 
+  <th>IDDM</th> 
+  <th>Traitement Courant</th> 
+  <th>Allergie</th> 
+  <th>Suivi Psychologique</th>
+   <th>Certificat Medical</th> 
+   <th>Actions</th> 
+   </tr> 
+   </thead> 
+   <tbody> 
+   {% for dossiermedical in dossiersMedical %} 
+   <tr> 
+   <td>{{ dossiermedical.id }}</td> 
+   <td>{{ dossiermedical.idDM }}</td>
+   <td>{{ dossiermedical.Traitementcourant }}</td>
+    <td>{{ dossiermedical.Allergie }}</td>
+     <td>{{ dossiermedical.SuiviPsychologique }}</td>
+      <td>{{ dossiermedical.CertificatMedical }}</td> 
+      <td><a href="{{ path('app_dossiermedical_edit') }}" class="btn btn-primary">Modifier</a></td> 
+      </tr>
+       {% endfor %}
+ </tbody>
+  </table>
+    
+{% endblock %}
